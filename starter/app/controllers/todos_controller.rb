@@ -1,6 +1,6 @@
 class TodosController < ApplicationController
   def index
-    @todos = Todo.order("created_at ASC").all
+    @todos = Todo.order("created_at DESC").all
   end
 
   def create
@@ -17,7 +17,11 @@ class TodosController < ApplicationController
     @todo = Todo.find(params[:id])
 
     if @todo.update(todo_params)
-      render status: 200, nothing: true
+      respond_to do |format|
+        format.html
+        format.json { render status: 200, json: @todo }
+      end 
+      
     else
       render status: 400, nothing: true
     end

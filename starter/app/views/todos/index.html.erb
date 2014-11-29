@@ -15,7 +15,8 @@
     <li data-todo-id="<%= todo.id %>" class="<%= todo.done ? "done" : '' %>">
       <%= todo.task %>
       <%= check_box_tag :done, 'yes', todo.done %>
-      <span>&times;</span>
+
+      <span>x</span>
     </li>
   <% end %>
 </ul>
